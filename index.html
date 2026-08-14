@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bhavyashree Prakash — Backend &amp; Integration Engineer</title>
+<meta name="description" content="Backend and integration engineer in Berlin. I build the layer between systems that were never designed to talk to each other.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070A10;          /* sort centre at night */
+  --panel:#0E1420;
+  --panel-2:#141C2B;
+  --line:#1E2938;
+  --text:#E9EFF7;
+  --muted:#8093AC;
+  --amber:#FFB000;        /* hi-vis */
+  --green:#35D399;        /* healthy route */
+  --red:#FF4D5E;          /* failed node */
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--text);
+  font-family:Inter,system-ui,sans-serif;font-size:16.5px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 18% 45%, rgba(7,10,16,.94) 0%, rgba(7,10,16,.72) 38%, rgba(7,10,16,.18) 70%, rgba(7,10,16,0) 100%);
+}
+.hero-inner{position:relative;z-index:2;width:100%;pointer-events:none}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--amber);margin:0 0 22px;
+}
+.eyebrow span{color:var(--muted)}
+h1{
+  font-family:Archivo,sans-serif;font-weight:800;letter-spacing:-.035em;line-height:.92;
+  font-size:clamp(2.6rem,7.4vw,5.1rem);margin:0 0 20px;
+}
+.tag{
+  font-family:Archivo,sans-serif;font-weight:600;letter-spacing:-.012em;
+  font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--text);margin:0 0 16px;max-width:22ch;
+}
+.lede{color:var(--muted);max-width:44ch;margin:0 0 34px;font-size:1.02rem}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;
+  text-decoration:none;padding:11px 18px;border:1px solid var(--line);
+  border-radius:2px;background:rgba(14,20,32,.72);backdrop-filter:blur(6px);
+  transition:border-color .18s, color .18s, transform .18s;
+}
+.btn:hover,.btn:focus-visible{border-color:var(--amber);color:var(--amber);transform:translateY(-1px)}
+.btn.primary{border-color:var(--amber);color:var(--amber)}
+.btn.primary:hover{background:rgba(255,176,0,.1)}
+
+.hint{
+  position:absolute;left:0;right:0;bottom:26px;z-index:3;pointer-events:none;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase;
+}
+.hint b{color:var(--amber);font-weight:500}
+.hint .live{display:inline-flex;align-items:center;gap:7px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---------- sections ---------- */
+section{padding:96px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:42px}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--amber);letter-spacing:.16em}
+h2{
+  font-family:Archivo,sans-serif;font-weight:700;letter-spacing:-.028em;
+  font-size:clamp(1.6rem,3.6vw,2.35rem);margin:0;
+}
+.intro p{max-width:60ch;font-size:1.08rem;margin:0 0 20px}
+.intro p:last-child{margin-bottom:0}
+.intro strong{color:var(--amber);font-weight:500}
+
+/* ---------- projects ---------- */
+.projects{display:grid;gap:18px}
+.card{
+  border:1px solid var(--line);background:var(--panel);border-radius:3px;
+  padding:30px 30px 26px;position:relative;overflow:hidden;
+  transition:border-color .22s, transform .22s, background .22s;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--amber);transform:scaleY(0);transform-origin:top;transition:transform .3s ease;
+}
+.card:hover{border-color:#2C3B50;background:var(--panel-2);transform:translateY(-2px)}
+.card:hover::before{transform:scaleY(1)}
+.card-top{display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+.card h3{font-family:Archivo,sans-serif;font-weight:700;font-size:1.22rem;letter-spacing:-.02em;margin:0}
+.status{
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.status.repo{color:var(--muted)}
+.stack{
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);
+  letter-spacing:.02em;margin:0 0 16px;
+}
+.card p{margin:0 0 18px;color:#C3CFDE;max-width:66ch;font-size:.985rem}
+.links{display:flex;gap:18px;flex-wrap:wrap}
+.links a{
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;
+  text-decoration:none;color:var(--amber);border-bottom:1px solid transparent;padding-bottom:2px;
+  transition:border-color .18s;
+}
+.links a:hover,.links a:focus-visible{border-color:var(--amber)}
+
+/* benchmark bars — real measured numbers */
+.bench{margin:0 0 20px;display:grid;gap:11px}
+.bench-row{display:grid;grid-template-columns:1fr;gap:5px}
+.bench-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
+  display:flex;justify-content:space-between;gap:12px;
+}
+.bench-label em{font-style:normal;color:var(--text)}
+.bench-track{height:5px;background:#18212F;border-radius:3px;overflow:hidden;position:relative}
+.bench-fill{
+  height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--green));
+  transition:width 1.1s cubic-bezier(.2,.7,.2,1);
+}
+.bench-fill.slow{background:#33415A}
+
+/* ---------- experience ---------- */
+.job{display:grid;grid-template-columns:150px 1fr;gap:26px;padding:24px 0;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+.job-when{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:.04em;padding-top:4px}
+.job h3{font-family:Archivo,sans-serif;font-weight:700;font-size:1.08rem;margin:0 0 3px;letter-spacing:-.015em}
+.job .org{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--amber);margin:0 0 12px}
+.job p{margin:0;color:#C3CFDE;max-width:62ch;font-size:.975rem}
+
+/* ---------- stack ---------- */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+.stack-col h4{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--amber);margin:0 0 12px;font-weight:500;
+}
+.stack-col ul{list-style:none;margin:0;padding:0}
+.stack-col li{font-size:.95rem;color:#C3CFDE;padding:3px 0}
+
+/* ---------- contact ---------- */
+.contact-lines{display:grid;gap:14px;margin-top:8px}
+.contact-lines a{
+  font-family:'JetBrains Mono',monospace;font-size:1rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:14px;width:fit-content;
+  border-bottom:1px solid var(--line);padding-bottom:6px;transition:border-color .18s,color .18s;
+}
+.contact-lines a:hover,.contact-lines a:focus-visible{color:var(--amber);border-color:var(--amber)}
+.contact-lines span{color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase;min-width:74px}
+footer{
+  padding:34px 0 46px;border-top:1px solid var(--line);
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:#5C6B82;letter-spacing:.05em;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+
+@media(max-width:720px){
+  section{padding:68px 0}
+  .job{grid-template-columns:1fr;gap:8px}
+  .hint{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="wrap">
+      <p class="eyebrow">Berlin <span>//</span> Backend &amp; Integration <span>//</span> Open to roles</p>
+      <h1>Bhavyashree<br>Prakash</h1>
+      <p class="tag">I build the layer between systems that were never designed to talk to each other.</p>
+      <p class="lede">Production REST APIs and integrations in Node.js, TypeScript and Java. Most of what I know about reliable systems I learned carrying a pager for the ones I wrote.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#work">See the work</a>
+        <a class="btn" href="https://github.com/Pbhavyashree" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/bhavyashree-prakash5" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="hint">
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span class="live"><i class="dot"></i>Network routing — live</span>
+      <span>Click a node to <b>fail</b> it. Traffic reroutes.</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= INTRO ================= -->
+<section class="intro rv">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>What I actually do</h2></div>
+    <p>I spent 1.8 years at Cognizant building and delivering more than 25 production integrations connecting an enterprise client's internal platforms to external partner systems — at <strong>99.9% uptime with zero critical failures</strong>. The interesting failures happen after launch, at the boundary between two services where neither team owns the problem.</p>
+    <p>Since then I've finished an MSc in Computer Science in Berlin and kept building: a live carrier-integration service, a PostgreSQL logistics warehouse, a GitOps delivery pipeline. All of it public, all of it tested, all of it running.</p>
+    <p>What I value most is reliability — systems that are <strong>debuggable, not just correct</strong>. Anything can pass its tests on a good day.</p>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><h2>Work</h2></div>
+    <div class="projects">
+
+      <article class="card rv">
+        <div class="card-top">
+          <h3>Shipment Tracking Aggregator</h3>
+          <span class="status"><i class="dot"></i>Deployed &amp; running</span>
+        </div>
+        <p class="stack">TypeScript · NestJS · Docker · Jest · Render</p>
+        <p>Unifies several external carrier APIs behind one internal contract. Nearly all the engineering in it exists for one reason: the upstreams are unreliable and the service has to be anyway. Circuit breakers so a failing carrier can't take the rest down, retry with exponential backoff and jitter, token-bucket rate limiting to stay inside partner quotas, HMAC-signed webhooks, and schema normalisation at the adapter boundary. 68 tests.</p>
+        <div class="links">
+          <a href="https://tracking-aggregator.onrender.com" target="_blank" rel="noopener">Live service →</a>
+          <a href="https://github.com/Pbhavyashree" target="_blank" rel="noopener">Source →</a>
+        </div>
+      </article>
+
+      <article class="card rv" id="warehouse">
+        <div class="card-top">
+          <h3>Parcel Analytics Warehouse</h3>
+          <span class="status repo">PostgreSQL · CI green</span>
+        </div>
+        <p class="stack">PostgreSQL 16 · Docker · GitHub Actions · 12.4M rows</p>
+        <p>A star schema for parcel logistics built at a size where the decisions matter — 2 million shipments and 10.4 million scan events, range-partitioned monthly. Every index justified by a before/after measurement rather than a habit, including one query where indexing changed nothing because partition pruning had already done the work.</p>
+        <div class="bench" data-bench>
+          <div class="bench-row">
+            <div class="bench-label"><span>Scan history of one parcel</span><em>1,592 ms → 0.95 ms</em></div>
+            <div class="bench-track"><div class="bench-fill" data-w="99.9"></div></div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label"><span>One customer's full history</span><em>271 ms → 13.4 ms</em></div>
+            <div class="bench-track"><div class="bench-fill" data-w="95"></div></div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label"><span>Regional revenue via matview</span><em>979 ms → 14.5 ms</em></div>
+            <div class="bench-track"><div class="bench-fill" data-w="98.5"></div></div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label"><span>Carrier SLA breaches — no gain</span><em>127 ms → 120 ms</em></div>
+            <div class="bench-track"><div class="bench-fill slow" data-w="6"></div></div>
+          </div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/Pbhavyashree/parcel-analytics-warehouse" target="_blank" rel="noopener">Source &amp; benchmarks →</a>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
+          <h3>GitOps Delivery Pipeline</h3>
+          <span class="status repo">Python · Kubernetes</span>
+        </div>
+        <p class="stack">FastAPI · Helm · ArgoCD · kind · Prometheus · GitHub Actions</p>
+        <p>The whole path from commit to running workload on Kubernetes, reproducible on a local cluster. CI's last act is writing the image tag into git; an in-cluster agent reconciles the rest. The application is small on purpose — the delivery path is the subject. 18 tests at 97% coverage.</p>
+        <div class="links">
+          <a href="https://github.com/Pbhavyashree/gitops-pipeline" target="_blank" rel="noopener">Source →</a>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
+          <h3>Feature Flag &amp; A/B Testing Service</h3>
+          <span class="status repo">TypeScript · React</span>
+        </div>
+        <p class="stack">NestJS · TypeORM · MySQL · Jest · React · Vite</p>
+        <p>Multi-tenant flag evaluation with percentage rollouts and deterministic bucketing, so the same user always lands in the same variant. Paired with a React and TypeScript operator console for real-time flag management. 114 tests across both, CI enforced on every merge.</p>
+        <div class="links">
+          <a href="https://github.com/Pbhavyashree/feature-flag-service" target="_blank" rel="noopener">Service →</a>
+          <a href="https://github.com/Pbhavyashree/flag-console" target="_blank" rel="noopener">Console →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">03</span><h2>Experience</h2></div>
+
+    <div class="job rv">
+      <div class="job-when">2022 — 2024</div>
+      <div>
+        <h3>Programmer Analyst — Backend &amp; Integration</h3>
+        <p class="org">Cognizant Technology Solutions · Bengaluru</p>
+        <p>Built and maintained 25+ production REST API integrations in Node.js and Java, bridging internal platforms with external partner systems at 99.9% uptime. Implemented OAuth 2.0 flows for partner-facing endpoints, sat with client stakeholders to work out what their process actually was, and carried a pager for everything I shipped.</p>
+      </div>
+    </div>
+
+    <div class="job rv">
+      <div class="job-when">2024 — present</div>
+      <div>
+        <h3>Sortation Associate</h3>
+        <p class="org">Amazon Logistics · Werder</p>
+        <p>Not a software role — taken while completing my MSc full-time. It's why the logistics domain isn't abstract to me: receive, sort and dispatch at volume, and what happens on the floor when a scan doesn't resolve.</p>
+      </div>
+    </div>
+
+    <div class="job rv">
+      <div class="job-when">2024 — 2026</div>
+      <div>
+        <h3>MSc Computer Science</h3>
+        <p class="org">IU International University of Applied Sciences · Berlin</p>
+        <p>Thesis on multimodal deep learning for music emotion recognition. Preceded by a BE in Electronics and Electrical Engineering, Bengaluru.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STACK ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">04</span><h2>Stack</h2></div>
+    <div class="stack-grid rv">
+      <div class="stack-col">
+        <h4>Languages</h4>
+        <ul><li>TypeScript / JavaScript</li><li>Java</li><li>Python</li><li>SQL</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4>Backend</h4>
+        <ul><li>NestJS · Express · FastAPI</li><li>REST API design &amp; versioning</li><li>Microservices</li><li>OAuth 2.0 · webhooks</li><li>Kafka · event-driven</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4>Data</h4>
+        <ul><li>PostgreSQL · MySQL</li><li>Schema design</li><li>Query optimisation</li><li>Partitioning</li><li>DynamoDB</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4>Infrastructure</h4>
+        <ul><li>Docker · Kubernetes</li><li>Helm · ArgoCD</li><li>GitHub Actions · CI/CD</li><li>AWS</li><li>Prometheus · Grafana</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4>Certified</h4>
+        <ul><li>MuleSoft Developer L1</li><li>MuleSoft Integration Associate</li></ul>
+      </div>
+      <div class="stack-col">
+        <h4>Languages spoken</h4>
+        <ul><li>English — C1</li><li>German — B1</li><li>Hindi — native</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">05</span><h2>Get in touch</h2></div>
+    <p class="rv" style="color:var(--muted);max-width:52ch;margin:0 0 26px">Open to backend, integration and platform engineering roles. Based in Berlin, happy to relocate within Germany.</p>
+    <div class="contact-lines rv">
+      <a href="mailto:bhavyashree.p.82@gmail.com"><span>Email</span>bhavyashree.p.82@gmail.com</a>
+      <a href="https://github.com/Pbhavyashree" target="_blank" rel="noopener"><span>GitHub</span>github.com/Pbhavyashree</a>
+      <a href="https://linkedin.com/in/bhavyashree-prakash5" target="_blank" rel="noopener"><span>LinkedIn</span>linkedin.com/in/bhavyashree-prakash5</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%">
+    <span>Berlin, Germany</span>
+    <span>Built with a canvas and no framework</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- scroll reveal ---------- */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.querySelector('[data-bench]') || e.target.hasAttribute('data-bench')){
+          const root = e.target.hasAttribute('data-bench') ? e.target : e.target.querySelector('[data-bench]');
+          root.querySelectorAll('.bench-fill').forEach((f,i)=>{
+            setTimeout(()=>{ f.style.width = f.dataset.w + '%'; }, 180 + i*130);
+          });
+        }
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.18});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  /* ---------- routing network ---------- */
+  const cv = document.getElementById('net');
+  const ctx = cv.getContext('2d');
+  let W=0,H=0,DPR=1;
+  let nodes=[], edges=[], packets=[];
+  const mouse={x:-9999,y:-9999,active:false};
+
+  const AMBER='255,176,0', GREEN='53,211,153', RED='255,77,94', STEEL='128,147,172';
+
+  function layout(){
+    DPR = Math.min(window.devicePixelRatio||1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W*DPR; cv.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    build();
+  }
+
+  function build(){
+    const small = W < 760;
+    const count = small ? 10 : 16;
+    nodes = [];
+    // Distribute across the right two-thirds so the headline stays legible,
+    // but allow a few on the left for depth behind the copy.
+    for(let i=0;i<count;i++){
+      const t = i/count;
+      const bandX = small ? 0.10 + Math.random()*0.80
+                          : 0.30 + Math.random()*0.66;
+      nodes.push({
+        x: bandX*W,
+        y: (0.10 + Math.random()*0.80)*H,
+        r: 3 + Math.random()*2.2,
+        hub: i % 5 === 0,
+        down:false, downUntil:0,
+        pulse:0, drift: Math.random()*Math.PI*2,
+        vx:(Math.random()-.5)*0.08, vy:(Math.random()-.5)*0.08,
+        code: 'F' + String(10+i)
+      });
+    }
+    // connect each node to its nearest few
+    edges = [];
+    const linkTo = 3;
+    nodes.forEach((n,i)=>{
+      const near = nodes.map((m,j)=>({j,d:dist(n,m)})).filter(o=>o.j!==i).sort((a,b)=>a.d-b.d).slice(0,linkTo);
+      near.forEach(o=>{
+        if(!edges.some(e=>(e.a===i&&e.b===o.j)||(e.a===o.j&&e.b===i))) edges.push({a:i,b:o.j,load:0});
+      });
+    });
+    packets = [];
+  }
+
+  function dist(a,b){const dx=a.x-b.x,dy=a.y-b.y;return Math.hypot(dx,dy);}
+
+  function neighbours(i){
+    const out=[];
+    edges.forEach(e=>{ if(e.a===i) out.push(e.b); else if(e.b===i) out.push(e.a); });
+    return out;
+  }
+
+  /* BFS avoiding failed nodes — this is what makes rerouting real
+     rather than decorative: a downed node genuinely has no path through it. */
+  function route(from,to){
+    if(nodes[to].down) return null;
+    const prev=new Map(); const seen=new Set([from]); const q=[from];
+    while(q.length){
+      const cur=q.shift();
+      if(cur===to){
+        const path=[to]; let c=to;
+        while(prev.has(c)){ c=prev.get(c); path.unshift(c); }
+        return path;
+      }
+      for(const nb of neighbours(cur)){
+        if(seen.has(nb)||nodes[nb].down) continue;
+        seen.add(nb); prev.set(nb,cur); q.push(nb);
+      }
+    }
+    return null;
+  }
+
+  function spawn(){
+    const live = nodes.map((n,i)=>i).filter(i=>!nodes[i].down);
+    if(live.length<2) return;
+    const from = live[(Math.random()*live.length)|0];
+    let to = live[(Math.random()*live.length)|0];
+    if(to===from) return;
+    const path = route(from,to);
+    if(!path||path.length<2) return;
+    packets.push({path,seg:0,t:0,speed:0.010+Math.random()*0.010});
+  }
+
+  let last=0;
+  function frame(ts){
+    const dt = Math.min((ts-last)||16, 50); last=ts;
+    ctx.clearRect(0,0,W,H);
+
+    // recover failed nodes after a while
+    nodes.forEach(n=>{ if(n.down && ts>n.downUntil) n.down=false; });
+
+    // gentle drift + cursor repulsion
+    nodes.forEach(n=>{
+      n.drift += 0.0006*dt;
+      n.x += n.vx + Math.sin(n.drift)*0.06;
+      n.y += n.vy + Math.cos(n.drift*0.9)*0.06;
+      if(n.x<20||n.x>W-20) n.vx*=-1;
+      if(n.y<20||n.y>H-20) n.vy*=-1;
+      if(mouse.active){
+        const dx=n.x-mouse.x, dy=n.y-mouse.y, d=Math.hypot(dx,dy);
+        if(d<130 && d>0.1){ const f=(130-d)/130*0.9; n.x+=dx/d*f; n.y+=dy/d*f; }
+      }
+      if(n.pulse>0) n.pulse-=dt/620;
+    });
+
+    // edges
+    edges.forEach(e=>{
+      const a=nodes[e.a], b=nodes[e.b];
+      const dead = a.down||b.down;
+      e.load = Math.max(0, e.load - dt/900);
+      const base = dead ? 0.05 : 0.11 + e.load*0.5;
+      ctx.strokeStyle = dead ? `rgba(${RED},0.14)` : `rgba(${STEEL},${base})`;
+      ctx.lineWidth = dead ? 1 : 1 + e.load*1.1;
+      if(dead){ ctx.setLineDash([3,5]); } else { ctx.setLineDash([]); }
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // packets
+    for(let i=packets.length-1;i>=0;i--){
+      const p=packets[i];
+      const from=nodes[p.path[p.seg]], to=nodes[p.path[p.seg+1]];
+      if(!to){ packets.splice(i,1); continue; }
+      // a node failing mid-flight invalidates the route: recompute or drop
+      if(to.down){
+        const re = route(p.path[p.seg], p.path[p.path.length-1]);
+        if(re && re.length>1){ p.path=re; p.seg=0; p.t=0; }
+        else { packets.splice(i,1); }
+        continue;
+      }
+      p.t += p.speed*(dt/16);
+      const seg = edges.find(e=>(e.a===p.path[p.seg]&&e.b===p.path[p.seg+1])||(e.b===p.path[p.seg]&&e.a===p.path[p.seg+1]));
+      if(seg) seg.load = Math.min(1, seg.load+0.02);
+      if(p.t>=1){
+        p.seg++; p.t=0;
+        const arrived = nodes[p.path[p.seg]];
+        if(arrived) arrived.pulse=1;
+        if(p.seg>=p.path.length-1){ packets.splice(i,1); continue; }
+      }
+      const x = from.x+(to.x-from.x)*p.t, y = from.y+(to.y-from.y)*p.t;
+      const g = ctx.createRadialGradient(x,y,0,x,y,9);
+      g.addColorStop(0,`rgba(${AMBER},0.95)`); g.addColorStop(1,`rgba(${AMBER},0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,9,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle=`rgba(255,225,170,0.98)`; ctx.beginPath(); ctx.arc(x,y,1.9,0,Math.PI*2); ctx.fill();
+    }
+
+    // nodes
+    nodes.forEach(n=>{
+      const col = n.down ? RED : (n.hub ? AMBER : GREEN);
+      if(n.pulse>0){
+        ctx.strokeStyle=`rgba(${col},${n.pulse*0.5})`; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r+ (1-n.pulse)*15,0,Math.PI*2); ctx.stroke();
+      }
+      if(n.down){
+        ctx.strokeStyle=`rgba(${RED},0.45)`; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r+6,0,Math.PI*2); ctx.stroke();
+      }
+      const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4.5);
+      g.addColorStop(0,`rgba(${col},0.5)`); g.addColorStop(1,`rgba(${col},0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(n.x,n.y,n.r*4.5,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle=`rgba(${col},${n.down?0.75:1})`;
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill();
+    });
+
+    if(Math.random()<0.055) spawn();
+    requestAnimationFrame(frame);
+  }
+
+  function hit(x,y){
+    let best=-1,bd=26;
+    nodes.forEach((n,i)=>{ const d=Math.hypot(n.x-x,n.y-y); if(d<bd){bd=d;best=i;} });
+    return best;
+  }
+
+  cv.addEventListener('pointermove',e=>{
+    const r=cv.getBoundingClientRect();
+    mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true;
+  });
+  cv.addEventListener('pointerleave',()=>{ mouse.active=false; mouse.x=mouse.y=-9999; });
+  cv.addEventListener('pointerdown',e=>{
+    const r=cv.getBoundingClientRect();
+    const i=hit(e.clientX-r.left, e.clientY-r.top);
+    if(i>=0){ nodes[i].down=true; nodes[i].downUntil=performance.now()+5200; nodes[i].pulse=1; }
+  });
+
+  window.addEventListener('resize',()=>{ clearTimeout(window.__rz); window.__rz=setTimeout(layout,180); });
+
+  layout();
+  if(!reduce){
+    for(let i=0;i<6;i++) spawn();
+    requestAnimationFrame(frame);
+  } else {
+    // static render for reduced motion
+    last=performance.now();
+    ctx.clearRect(0,0,W,H);
+    edges.forEach(e=>{const a=nodes[e.a],b=nodes[e.b];ctx.strokeStyle=`rgba(${STEEL},0.14)`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();});
+    nodes.forEach(n=>{const col=n.hub?AMBER:GREEN;ctx.fillStyle=`rgba(${col},1)`;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fill();});
+  }
+})();
+</script>
+</body>
+</html>
