@@ -241,6 +241,19 @@ footer{
         </div>
       </article>
 
+      <article class="card rv">
+        <div class="card-top">
+          <h3>Double-Entry Ledger</h3>
+          <span class="status repo">PostgreSQL · CI green</span>
+        </div>
+        <p class="stack">PostgreSQL 16 · PL/pgSQL · Docker · GitHub Actions</p>
+        <p>An accounting ledger where correctness is the database's job. Every entry must balance to zero, posted entries are immutable, and corrections are reversals rather than edits — all enforced by constraint triggers, because an application can always be wrong and an unbalanced entry doesn't crash anything, it just makes every report downstream quietly false. Bitemporal history separates when something happened from when the ledger learned about it, so you can ask what the books said on a past date before a later correction existed.</p>
+        <p>The part worth reading is the concurrency test. Two simultaneous withdrawals of 60.00 from a balance of 100.00 both pass their own balance check and both commit, leaving the account at −20.00. Neither transaction did anything wrong; the invariant breaks on the interleaving. <code>SELECT … FOR UPDATE</code> doesn't fix it — the constraint spans an aggregate and the offending row doesn't exist yet. The test reproduces the anomaly deterministically and proves SERIALIZABLE prevents it.</p>
+        <div class="links">
+          <a href="https://github.com/Pbhavyashree/ledger-core" target="_blank" rel="noopener">Source &amp; write-up →</a>
+        </div>
+      </article>
+
       <article class="card rv" id="warehouse">
         <div class="card-top">
           <h3>Parcel Analytics Warehouse</h3>
