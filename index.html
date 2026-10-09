@@ -217,7 +217,7 @@ footer{
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">01</span><h2>What I actually do</h2></div>
     <p>I spent 1.8 years at Cognizant building and delivering more than 25 production integrations connecting an enterprise client's internal platforms to external partner systems — at <strong>99.9% uptime with zero critical failures</strong>. The interesting failures happen after launch, at the boundary between two services where neither team owns the problem.</p>
-    <p>Since then I've finished an MSc in Computer Science in Berlin and kept building: a live carrier-integration service, a PostgreSQL logistics warehouse, a GitOps delivery pipeline. All of it public, all of it tested, all of it running.</p>
+    <p>Since then I've finished an MSc in Computer Science in Berlin and kept building: an API-led integration platform over live electricity-market data, a carrier-integration service, a PostgreSQL logistics warehouse, a GitOps delivery pipeline. All of it public, all of it tested, all of it running.</p>
     <p>What I value most is reliability — systems that are <strong>debuggable, not just correct</strong>. Anything can pass its tests on a good day.</p>
   </div>
 </section>
@@ -227,6 +227,21 @@ footer{
   <div class="wrap">
     <div class="sec-head rv"><span class="sec-num">02</span><h2>Work</h2></div>
     <div class="projects">
+
+      <article class="card rv">
+        <div class="card-top">
+          <h3>energy-hub</h3>
+          <span class="status"><i class="dot"></i>Deployed &amp; polling</span>
+        </div>
+        <p class="stack">MuleSoft 4.6 CE &middot; RAML &middot; DataWeave &middot; MUnit &middot; PostgreSQL &middot; Docker &middot; Caddy</p>
+        <p>An API-led integration layer over German day-ahead electricity prices. Four Mule applications across system, process and experience layers, polling two independent upstreams on a schedule and serving a household view of when power is cheap. It has been running unattended on a free-tier ARM instance since the start of October, and records every poll attempt it makes, successful or not.</p>
+        <p>Both upstreams publish the same EPEX auction, which makes them a check on each other: an hourly price has to equal the mean of the four quarter-hours inside it. That started as a way to work out which of ENTSO-E's two auction sequences was the right one, and it now runs as a comparison on every request. The feeds are never merged, though &mdash; ENTSO-E is quarter-hourly and aWATTar is hourly, and downsampling throws away the detail where negative-price spikes live while upsampling invents detail that isn't there.</p>
+        <p>The failure log is the part I would point at. Five bugs on this project returned perfectly well-formed responses with the wrong numbers in them: a flat price curve from a consumed stream, timestamps shifted two hours by a timezone relabel, an entire upstream that silently stopped being polled while the monitoring table went on reporting success. Every structural assertion passed each time. <code>NOTES.md</code> has all of them, including the one where the fix was confidently wrong and a query settled what reasoning could not.</p>
+        <div class="links">
+          <a href="https://energy-hub.duckdns.org" target="_blank" rel="noopener">Live &rarr;</a>
+          <a href="https://github.com/Pbhavyashree/energy-hub" target="_blank" rel="noopener">Source &amp; notes &rarr;</a>
+        </div>
+      </article>
 
       <article class="card rv">
         <div class="card-top">
@@ -358,7 +373,7 @@ footer{
       </div>
       <div class="stack-col">
         <h4>Backend</h4>
-        <ul><li>NestJS · Express · FastAPI</li><li>REST API design &amp; versioning</li><li>Microservices</li><li>OAuth 2.0 · webhooks</li><li>Kafka · event-driven</li></ul>
+        <ul><li>NestJS · Express · FastAPI</li><li>MuleSoft 4 · RAML · DataWeave</li><li>REST API design &amp; versioning</li><li>Microservices</li><li>OAuth 2.0 · webhooks</li><li>Kafka · event-driven</li></ul>
       </div>
       <div class="stack-col">
         <h4>Data</h4>
