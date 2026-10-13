@@ -245,6 +245,21 @@ footer{
 
       <article class="card rv">
         <div class="card-top">
+          <h3>bahnwatch</h3>
+          <span class="status"><i class="dot"></i>Deployed &amp; polling</span>
+        </div>
+        <p class="stack">Python &middot; FastAPI &middot; WebSockets &middot; asyncio &middot; NumPy &middot; SQLite &middot; systemd &middot; Caddy</p>
+        <p>A commute alerter that answers when to leave rather than what is late, running on the official VBB feed for a journey I actually make. Delay magnitude is the wrong trigger: on a single leg a delay costs you at most one headway, because you take the next train. On a connection it either still works, costing nothing, or it does not, costing the full wait for the next service. The cost is a step, not a ramp, and the step is where the whole risk sits &mdash; so the alert fires on the shift in leave time, behind hysteresis and a daily cap, because an alerter that cries wolf gets muted and is then worth less than nothing.</p>
+        <p>The bug worth recording is the leave time itself, which is the entire output. It was computed by subtracting walk, ride, transfer and buffer from the target arrival. Every one of those numbers was right. The answer was twenty minutes wrong, because the arithmetic has no idea that trains leave at times: it returned 21:48, which puts you on the platform for the 22:00 rather than the 21:50, into Friedrichstrasse one minute after the connecting S7 has gone. It now plans backwards through services that exist &mdash; the last train on the final leg that still meets the target, then the last train that connects into that one, down to the door.</p>
+        <p>Most of the rest came from swapping a simulator for the real feed. The planner had been matching departures by line and never by direction, which the simulator could not expose because it gives every line exactly one destination; at the real S Blankenburg the S2 alternates north and south, so half the trains it timed me onto were going the wrong way. Then the first fix was wrong in the opposite direction, because a terminus is not a direction either. A fake data source reproduces the shape of real data and none of its awkwardness, and the README has all five.</p>
+        <div class="links">
+          <a href="https://bahnwatch.duckdns.org" target="_blank" rel="noopener">Live &rarr;</a>
+          <a href="https://github.com/Pbhavyashree/bahnwatch" target="_blank" rel="noopener">Source &amp; write-up &rarr;</a>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
           <h3>Shipment Tracking Aggregator</h3>
           <span class="status"><i class="dot"></i>Deployed &amp; running</span>
         </div>
