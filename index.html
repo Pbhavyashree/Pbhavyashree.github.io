@@ -230,6 +230,35 @@ footer{
 
       <article class="card rv">
         <div class="card-top">
+          <h3>GridPilot</h3>
+          <span class="status"><i class="dot"></i>Deployed &amp; scheduling</span>
+        </div>
+        <p class="stack">Python &middot; FastAPI &middot; LightGBM &middot; pandas &middot; PostgreSQL &middot; Prometheus &middot; Grafana &middot; Docker &middot; Caddy</p>
+        <p>A scheduler for work that can wait. A job arrives with a deadline &mdash; a backup, a report, a model retrain &mdash; and GridPilot places it in the hours when German electricity is cheapest or cleanest, using published day-ahead prices where they exist and its own forecasts of price and grid carbon intensity where they don't. Every plan can explain itself: the curve it saw, which hours were real data and which were forecasts, and what running immediately would have cost.</p>
+        <p>The honest result came first. Replaying a year day by day, with every forecast limited to what was known at 10:00 the day before, &ldquo;always start at 11:00&rdquo; beat every forecasting baseline on carbon. Carbon in Germany follows the wind, and wind does not repeat weekly. A LightGBM model with weather inputs finally beat the rule &mdash; but only after making sure those inputs were weather <em>forecasts</em> made two days earlier, not the weather that actually happened. With real weather the model quietly knows tomorrow's wind, and the backtest looks wonderful and means nothing.</p>
+        <div class="bench" data-bench>
+          <div class="bench-row">
+            <div class="bench-label"><span>Carbon window regret vs the 11:00 rule</span><em>12.4 → 7.0 g/kWh</em></div>
+            <div class="bench-track"><div class="bench-fill" data-w="44"></div></div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label"><span>Carbon forecast error</span><em>97 → 46 g/kWh</em></div>
+            <div class="bench-track"><div class="bench-fill" data-w="52"></div></div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label"><span>One-year saving vs nightly cron, share of perfect foresight</span><em>&minus;50% cost, &minus;42% CO₂ &middot; 97%</em></div>
+            <div class="bench-track"><div class="bench-fill" data-w="97"></div></div>
+          </div>
+        </div>
+        <p>The check worth recording is the one I nearly left out. The feed monitor opened an incident when an upstream failed several runs in a row, and it caught a simulated Energy-Charts outage cleanly. But a stopped ingestor fails nothing: no error, no failed run, just data quietly going stale while every check passes. It now also alerts on silence. The other lesson came from the live system: a price forecast made 38 hours ahead was far too high on the level, yet picked exactly the right cheapest window, because a scheduler needs the shape of the day, not the number.</p>
+        <div class="links">
+          <a href="https://gridpilot.duckdns.org" target="_blank" rel="noopener">Live &rarr;</a>
+          <a href="https://github.com/Pbhavyashree/gridpilot" target="_blank" rel="noopener">Source &amp; backtest &rarr;</a>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
           <h3>energy-hub</h3>
           <span class="status"><i class="dot"></i>Deployed &amp; polling</span>
         </div>
